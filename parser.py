@@ -368,7 +368,7 @@ def parse(file_name):
 def generate(file_name, data_file, runtime_file):
     _, final_layer, _ = parse(file_name)
     data_buffer = ["#include \"include/gemmini_nn_mini.h\""]
-    runtime_buffer = [f"#include \"{data_file}\"", "void run() {"]
+    runtime_buffer = [f"#include \"data.h\"", "void run() {"]
   
     output_name = final_layer.generate_gemmini_cached(data_buffer, runtime_buffer, IdGenerator(), {})
     runtime_buffer.append("}")
